@@ -210,6 +210,117 @@
     .nav-links{display:none;}
     .footer-grid{flex-direction:column;}
   }
+
+  /* FREE GUIDE */
+  .guide-bg{background:var(--ink); color:#fff;}
+  .guide-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:center;}
+  @media (max-width:820px){ .guide-grid{grid-template-columns:1fr;} }
+  .guide-copy .kicker{color:var(--green);}
+  .guide-copy h2{color:#fff;}
+  .guide-copy p{color:rgba(255,255,255,0.7); font-size:16.5px; margin-bottom:20px;}
+  .guide-list{margin:24px 0 0;}
+  .guide-list li{display:flex; gap:12px; align-items:flex-start; padding:8px 0; font-size:15px; color:rgba(255,255,255,0.85);}
+  .guide-card{
+    background:#fff; border-radius:20px; padding:36px; color:var(--ink);
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  }
+  .guide-card h3{font-size:20px; font-weight:800; margin-bottom:6px;}
+  .guide-card .sub{color:var(--ink-soft); font-size:14px; margin-bottom:22px;}
+  .guide-field{
+    width:100%; padding:13px 16px; border-radius:10px; border:1.5px solid var(--line);
+    font-family:inherit; font-size:14.5px; margin-bottom:12px; background:rgba(11,15,14,0.03);
+  }
+  .guide-field:focus{outline:none; border-color:var(--green);}
+  .guide-submit{
+    width:100%; padding:14px; border:none; border-radius:10px; background:var(--green);
+    color:#fff; font-weight:700; font-size:15px; cursor:pointer; transition:transform .15s ease;
+  }
+  .guide-submit:hover{transform:translateY(-1px);}
+  .guide-note{font-size:12px; color:var(--ink-soft); margin-top:12px; text-align:center;}
+  .guide-success{display:none; text-align:center;}
+  .guide-success h3{font-size:20px; font-weight:800; margin-bottom:10px;}
+  .guide-success p{color:var(--ink-soft); font-size:14.5px; margin-bottom:20px;}
+  .guide-download{
+    display:inline-flex; align-items:center; justify-content:center; width:100%;
+    padding:14px; border-radius:10px; background:var(--ink); color:#fff; font-weight:700; font-size:15px;
+  }
+
+  /* SAMPLE / PROOF */
+  .proof-badge{
+    display:inline-block; background:var(--ink); color:#fff; font-weight:700; font-size:11.5px;
+    letter-spacing:0.5px; text-transform:uppercase; padding:6px 12px; border-radius:100px; margin-bottom:14px;
+  }
+  .proof-grid{display:grid; grid-template-columns:1fr 1.3fr; gap:32px; align-items:center;}
+  @media (max-width:820px){ .proof-grid{grid-template-columns:1fr;} }
+  .proof-img{border-radius:16px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.15);}
+  .proof-caption{text-align:center; font-size:13px; color:var(--ink-soft); margin-top:12px;}
+
+  /* BENEFIT HOOK */
+  .hook-bg{background:var(--green-tint);}
+  .hook-list{max-width:560px; margin:0 auto 36px;}
+  .hook-list li{
+    display:flex; align-items:center; gap:16px; padding:18px 0; border-bottom:1px solid rgba(11,15,14,0.08);
+    font-size:22px; font-weight:800; letter-spacing:-0.3px;
+  }
+  .hook-list li:last-child{border-bottom:none;}
+  .hook-num{
+    flex-shrink:0; width:36px; height:36px; border-radius:50%; background:var(--green); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:900;
+  }
+  .hook-cta{text-align:center;}
+
+  /* SCANNER */
+  .scanner-bg{background:var(--ink); color:#fff;}
+  .scanner-bg .kicker{color:var(--green);}
+  .scanner-bg .section-head h2{color:#fff;}
+  .scanner-bg .section-head p{color:rgba(255,255,255,0.65);}
+  .scanner-card{
+    max-width:720px; margin:0 auto; background:#fff; color:var(--ink);
+    border-radius:24px; padding:44px; box-shadow:0 30px 70px rgba(0,0,0,0.35);
+  }
+  .scanner-q{margin-bottom:28px;}
+  .scanner-q:last-of-type{margin-bottom:0;}
+  .scanner-q-label{font-weight:800; font-size:16px; margin-bottom:14px;}
+  .scanner-options{display:flex; flex-wrap:wrap; gap:10px;}
+  .scanner-radio{position:absolute; opacity:0; width:0; height:0; pointer-events:none;}
+  .scanner-pill{
+    display:inline-flex; align-items:center; padding:10px 18px; border-radius:100px;
+    border:1.5px solid var(--line); font-size:14px; font-weight:600; color:var(--ink-soft);
+    cursor:pointer; transition:all .15s ease;
+  }
+  .scanner-radio:checked + .scanner-pill{
+    background:var(--green); color:#fff; border-color:var(--green);
+  }
+  .scanner-number{
+    width:100%; padding:14px 16px; border:1.5px solid var(--line); border-radius:10px;
+    font-size:15px; font-family:inherit; color:var(--ink); background:#fff; box-sizing:border-box;
+  }
+  .scanner-number:focus{outline:none; border-color:var(--green);}
+  .scanner-hint{font-size:12.5px; color:var(--ink-soft); margin-top:6px;}
+  .scanner-submit{
+    width:100%; margin-top:12px; padding:16px; border:none; border-radius:12px;
+    background:var(--ink); color:#fff; font-weight:800; font-size:15.5px; cursor:pointer;
+    transition:transform .15s ease;
+  }
+  .scanner-submit:hover{transform:translateY(-1px);}
+  .scanner-error{color:var(--ink); font-weight:700; font-size:13.5px; margin-top:10px; display:none; text-align:center;}
+
+  .scanner-result{display:none; text-align:center;}
+  .scanner-score-ring{
+    width:180px; height:180px; border-radius:50%; margin:0 auto 20px;
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    background:var(--green-tint); border:6px solid var(--green);
+  }
+  .scanner-score-num{font-size:52px; font-weight:900; color:var(--ink); line-height:1;}
+  .scanner-score-max{font-size:13px; color:var(--ink-soft); font-weight:700;}
+  .scanner-tier{font-size:22px; font-weight:900; margin-bottom:10px;}
+  .scanner-tier-desc{color:var(--ink-soft); font-size:15px; margin-bottom:26px; max-width:480px; margin-left:auto; margin-right:auto;}
+  .scanner-breakdown{text-align:left; margin-bottom:28px;}
+  .scanner-bar-row{margin-bottom:12px;}
+  .scanner-bar-label{display:flex; justify-content:space-between; font-size:13px; font-weight:700; color:var(--ink-soft); margin-bottom:5px;}
+  .scanner-bar-track{background:var(--line); border-radius:100px; height:8px; overflow:hidden;}
+  .scanner-bar-fill{background:var(--green); height:100%; border-radius:100px;}
+  .scanner-retake{display:block; margin-top:16px; font-size:13.5px; color:var(--ink-soft); text-decoration:underline; cursor:pointer; background:none; border:none; font-family:inherit;}
 </style>
 </head>
 <body>
@@ -218,7 +329,10 @@
   <nav>
     <a href="#top" class="logo">ZOL<span>MARKETS</span></a>
     <div class="nav-links">
+      <a href="#scanner">Get My Score</a>
+      <a href="#free-guide">Free Guide</a>
       <a href="#services">Services</a>
+      <a href="#partner">Partner With Us</a>
       <a href="#process">How It Works</a>
       <a href="#qualify">Who We Work With</a>
       <a href="#about">About</a>
@@ -234,17 +348,129 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow"><span class="dot"></span> No upfront cost — 100% revenue share</div>
-      <h1>We turn <span class="accent">followers</span><br>into revenue.</h1>
-      <p class="hero-sub">ZOL Markets builds and launches digital products, coaching programs, and paid communities for creators with 20K–200K followers — and we only make money when you do.</p>
+      <div class="eyebrow"><span class="dot"></span> You pay nothing upfront — 100% revenue share</div>
+      <h1>Your followers could be a <span class="accent">six-figure business.</span></h1>
+      <p class="hero-sub">You've already built the audience. We build the products, funnels, and communities that turn it into real income — and we only make money when you do.</p>
       <div class="hero-ctas">
         <a href="https://calendly.com/lolocarlo2010/30min" class="btn btn-green">Book Your Free Call</a>
-        <a href="#process" class="btn btn-outline">See How It Works</a>
+        <a href="#free-guide" class="btn btn-outline">Get the Free Guide</a>
       </div>
       <div class="stat-strip">
         <div class="stat"><b>20K–200K</b><span>Follower sweet spot</span></div>
         <div class="stat"><b>$0</b><span>Upfront cost, ever</span></div>
         <div class="stat"><b>100%</b><span>Performance-based</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCANNER -->
+  <section id="scanner" class="scanner-bg">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Free Tool</span>
+        <h2>What's your Monetization Score?</h2>
+        <p>Answer 6 quick questions about your audience and get a 1–100 score, based on the same factors we use to decide who we take on as a client.</p>
+      </div>
+
+      <div class="scanner-card">
+        <div id="scannerForm">
+          <div class="scanner-q">
+            <div class="scanner-q-label">1. How many followers do you have on your main platform?</div>
+            <input class="scanner-number" type="number" min="0" step="1" inputmode="numeric" id="q1Input" placeholder="e.g. 42000">
+            <div class="scanner-hint">Just the number, no commas.</div>
+          </div>
+
+          <div class="scanner-q">
+            <div class="scanner-q-label">2. On a typical post, how many total likes + comments + saves do you get?</div>
+            <input class="scanner-number" type="number" min="0" step="1" inputmode="numeric" id="q2Input" placeholder="e.g. 1800">
+            <div class="scanner-hint">A rough average is fine — we'll turn this into your engagement rate.</div>
+          </div>
+
+          <div class="scanner-q">
+            <div class="scanner-q-label">3. How clear is your content niche?</div>
+            <div class="scanner-options">
+              <input class="scanner-radio" type="radio" name="q3" id="q3a" value="5"><label class="scanner-pill" for="q3a">Pretty broad</label>
+              <input class="scanner-radio" type="radio" name="q3" id="q3b" value="10"><label class="scanner-pill" for="q3b">Somewhat focused</label>
+              <input class="scanner-radio" type="radio" name="q3" id="q3c" value="15"><label class="scanner-pill" for="q3c">Very specific</label>
+            </div>
+          </div>
+
+          <div class="scanner-q">
+            <div class="scanner-q-label">4. How often do you post?</div>
+            <div class="scanner-options">
+              <input class="scanner-radio" type="radio" name="q4" id="q4a" value="5"><label class="scanner-pill" for="q4a">Inconsistent</label>
+              <input class="scanner-radio" type="radio" name="q4" id="q4b" value="10"><label class="scanner-pill" for="q4b">A few times a week</label>
+              <input class="scanner-radio" type="radio" name="q4" id="q4c" value="15"><label class="scanner-pill" for="q4c">Daily or almost</label>
+            </div>
+          </div>
+
+          <div class="scanner-q">
+            <div class="scanner-q-label">5. Do people DM you or ask the same questions for advice?</div>
+            <div class="scanner-options">
+              <input class="scanner-radio" type="radio" name="q5" id="q5a" value="3"><label class="scanner-pill" for="q5a">Rarely</label>
+              <input class="scanner-radio" type="radio" name="q5" id="q5b" value="8"><label class="scanner-pill" for="q5b">Sometimes</label>
+              <input class="scanner-radio" type="radio" name="q5" id="q5c" value="15"><label class="scanner-pill" for="q5c">All the time</label>
+            </div>
+          </div>
+
+          <div class="scanner-q">
+            <div class="scanner-q-label">6. Have you ever tried selling something to your audience?</div>
+            <div class="scanner-options">
+              <input class="scanner-radio" type="radio" name="q6" id="q6a" value="8"><label class="scanner-pill" for="q6a">Never tried</label>
+              <input class="scanner-radio" type="radio" name="q6" id="q6b" value="4"><label class="scanner-pill" for="q6b">Tried, it flopped</label>
+              <input class="scanner-radio" type="radio" name="q6" id="q6c" value="10"><label class="scanner-pill" for="q6c">Tried, worked okay</label>
+            </div>
+          </div>
+
+          <button type="button" class="scanner-submit" id="scannerSubmit">See My Monetization Score</button>
+          <div class="scanner-error" id="scannerError">Answer all 6 questions to get your score.</div>
+        </div>
+
+        <div class="scanner-result" id="scannerResult">
+          <div class="scanner-score-ring">
+            <div class="scanner-score-num" id="scannerScoreNum">0</div>
+            <div class="scanner-score-max">/ 100</div>
+          </div>
+          <div class="scanner-tier" id="scannerTier"></div>
+          <div class="scanner-tier-desc" id="scannerTierDesc"></div>
+          <div class="scanner-breakdown" id="scannerBreakdown"></div>
+          <a class="btn btn-green" id="scannerCta" href="https://calendly.com/lolocarlo2010/30min" style="width:100%;">Book Your Free Call</a>
+          <button type="button" class="scanner-retake" id="scannerRetake">Retake the quiz</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE GUIDE -->
+  <section id="free-guide" class="guide-bg">
+    <div class="wrap guide-grid">
+      <div class="guide-copy">
+        <span class="kicker">Not Ready To Book Yet?</span>
+        <h2>Start with the free guide.</h2>
+        <p>The Creator Monetization Starter Guide — five pages on how to figure out what to sell, what to charge, and how to launch it without it flopping. No call required.</p>
+        <ul class="guide-list">
+          <li><span class="qual-check">✓</span> How to tell if your audience is actually ready to buy</li>
+          <li><span class="qual-check">✓</span> The 3 product formats that work best for creators</li>
+          <li><span class="qual-check">✓</span> A simple 5-step launch sequence you can copy</li>
+        </ul>
+      </div>
+      <div class="guide-card">
+        <div id="guideForm">
+          <h3>Get the free guide</h3>
+          <div class="sub">Takes 10 seconds. We'll never spam you.</div>
+          <form id="guideFormEl" action="https://formspree.io/f/PASTE_YOUR_FORMSPREE_ID" method="POST">
+            <input class="guide-field" type="text" name="name" placeholder="First name" required>
+            <input class="guide-field" type="email" name="email" placeholder="Email address" required>
+            <input class="guide-field" type="tel" name="phone" placeholder="Phone number" required>
+            <button type="submit" class="guide-submit">Send Me The Guide</button>
+          </form>
+          <div class="guide-note">By submitting, you'll hear from ZOL Markets about monetizing your audience.</div>
+        </div>
+        <div id="guideSuccess" class="guide-success">
+          <h3>You're in 🎉</h3>
+          <p>Here's your copy of the guide — download it below.</p>
+          <a class="guide-download" href="./ZOL-Markets-Monetization-Guide.pdf" download>Download the Guide (PDF)</a>
+        </div>
       </div>
     </div>
   </section>
@@ -271,41 +497,111 @@
         <div class="model-card">
           <div class="num">03</div>
           <h3>Selective by design</h3>
-          <p>We only take on creators we're confident we can generate real revenue for — this model doesn't work any other way.</p>
+          <p>We'll only take you on if we're confident we can generate real revenue for you — this model doesn't work any other way.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section id="services">
+  <section id="services" class="hook-bg">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">What We Do</span>
-        <h2>Here's what we build for creators.</h2>
+        <span class="kicker">If This Is You</span>
+        <h2>You've got 20K–200K followers and want to:</h2>
+      </div>
+      <ul class="hook-list">
+        <li><span class="hook-num">1</span> Launch your first product</li>
+        <li><span class="hook-num">2</span> Create monthly recurring income</li>
+        <li><span class="hook-num">3</span> Turn followers into customers</li>
+      </ul>
+      <div class="hook-cta">
+        <a href="https://calendly.com/lolocarlo2010/30min" class="btn btn-green">Then Let's Talk — Book a Free Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES DETAIL -->
+  <section id="services-detail">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">What That Looks Like</span>
+        <h2>Here's what we build for you.</h2>
         <p>Every partnership is custom to your audience, but this is the core of what we do.</p>
       </div>
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon">01</div>
           <h3>Digital Product Launch</h3>
-          <p>We design, build, and launch a course, guide, or template product — from offer to checkout to launch sequence — timed to your content calendar.</p>
+          <p>We design, build, and launch your first course, guide, or template product — from offer to checkout to launch sequence — timed to your content calendar.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">02</div>
           <h3>Paid Community</h3>
-          <p>A recurring membership community: onboarding, content cadence, and retention systems so members stick around month after month.</p>
+          <p>A recurring membership community for your audience: onboarding, content cadence, and retention systems so your members stick around month after month.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">03</div>
           <h3>Full-Stack Monetization</h3>
-          <p>Products, community, and content strategy running together as one system — for creators ready to run monetization like a real business.</p>
+          <p>Your products, community, and content strategy running together as one system — once you're ready to run monetization like a real business.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">04</div>
           <h3>Content & Launch Strategy</h3>
-          <p>We map the content sequence that sells the product — announcement, proof, urgency — so launches convert instead of falling flat.</p>
+          <p>We map the content sequence that sells your product — announcement, proof, urgency — so your launches convert instead of falling flat.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF / SAMPLE -->
+  <section id="proof" style="background:rgba(11,15,14,0.03);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="proof-badge">Example Concept — Not An Actual Client</span>
+        <h2>Here's the kind of thing we build.</h2>
+        <p>We don't have public client results to show yet — we're still early. So here's a mockup of what a first digital product could actually look like, start to finish.</p>
+      </div>
+      <div class="proof-grid">
+        <div>
+          <div class="proof-img"><img src="./sample_cover.png" alt="Example course cover concept"></div>
+          <div class="proof-caption">Product cover — concept only</div>
+        </div>
+        <div>
+          <div class="proof-img"><img src="./sample_curriculum.png" alt="Example course curriculum concept"></div>
+          <div class="proof-caption">Course structure — concept only</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER -->
+  <section id="partner" class="model-bg">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Partner With Us</span>
+        <h2>This isn't a gig. It's a partnership.</h2>
+        <p>You're not hiring a freelancer and you're not signing away your brand. Here's what actually changes when you partner with ZOL Markets.</p>
+      </div>
+      <div class="model-grid">
+        <div class="model-card">
+          <div class="num">01</div>
+          <h3>You keep ownership</h3>
+          <p>The product, the brand, the audience relationship — it's all yours. We build and launch it, you keep it.</p>
+        </div>
+        <div class="model-card">
+          <div class="num">02</div>
+          <h3>We handle what you don't have time for</h3>
+          <p>Strategy, the product itself, the launch sequence, the funnel — the parts most creators get stuck on, we take off your plate.</p>
+        </div>
+        <div class="model-card">
+          <div class="num">03</div>
+          <h3>No contracts, no lock-in</h3>
+          <p>There's no long-term agreement keeping you here. If it's not working for you, you walk away — we're that confident it will work.</p>
+        </div>
+      </div>
+      <div class="hook-cta">
+        <a href="https://calendly.com/lolocarlo2010/30min" class="btn btn-green">Become a Partner — Book a Free Call</a>
       </div>
     </div>
   </section>
@@ -315,7 +611,7 @@
     <div class="wrap">
       <div class="section-head">
         <span class="kicker">How It Works</span>
-        <h2>From audience to income, in four steps.</h2>
+        <h2>From your audience to your income, in four steps.</h2>
       </div>
       <div class="process-list">
         <div class="process-step">
@@ -355,13 +651,13 @@
     <div class="wrap qual-grid">
       <div>
         <span class="kicker">Who We Work With</span>
-        <h2 style="margin-bottom:24px;">We're selective — on purpose.</h2>
+        <h2 style="margin-bottom:24px;">Is this you? We're selective — on purpose.</h2>
         <ul class="qual-list">
-          <li><span class="qual-check">✓</span> 20,000–200,000 followers on at least one platform</li>
-          <li><span class="qual-check">✓</span> Genuine engagement — comments, saves, and shares, not just follower count</li>
-          <li><span class="qual-check">✓</span> A clear content niche where a product makes obvious sense</li>
-          <li><span class="qual-check">✓</span> Willingness to actually show up and promote what we build</li>
-          <li><span class="qual-check">✓</span> No existing product competing with what we'd build together</li>
+          <li><span class="qual-check">✓</span> You've got 20,000–200,000 followers on at least one platform</li>
+          <li><span class="qual-check">✓</span> Your audience actually engages — comments, saves, and shares, not just a follower count</li>
+          <li><span class="qual-check">✓</span> You have a clear content niche where a product makes obvious sense</li>
+          <li><span class="qual-check">✓</span> You're willing to actually show up and promote what we build for you</li>
+          <li><span class="qual-check">✓</span> You don't already have a product competing with what we'd build together</li>
         </ul>
       </div>
       <div class="qual-card">
@@ -380,7 +676,7 @@
       <span class="kicker">Who's Behind This</span>
       <h2>Started by one kid in San Diego, still building the same way.</h2>
       <p style="color:var(--ink-soft); font-size:17px; line-height:1.75;">
-        ZOL Markets started in high school — just me, in San Diego, convinced that creators were sitting on audiences worth real money without the systems to turn that into income. Most creators don't monetize for one of three reasons: no time, no expertise, or no motivation to actually build something. So instead of being just another agency, ZOL Markets works like three businesses in one — a content team that helps you create, a monetization partner that turns your audience into income, and a product studio that packages what you already know into something people can buy. The goal hasn't changed: build this into an agency that can help influencers with millions of followers monetize properly, by first getting it right for creators in the 20K–200K range.
+        ZOL Markets started in high school — just me, in San Diego, convinced that creators like you were sitting on audiences worth real money without the systems to turn that into income. If you're not monetizing yet, it's probably one of three reasons: no time, no expertise, or no motivation to actually build something. So instead of being just another agency, ZOL Markets works like three businesses in one for you — a content team that helps you create, a monetization partner that turns your audience into income, and a product studio that packages what you already know into something your audience can buy. The goal hasn't changed: build this into an agency that can help creators with millions of followers monetize properly, by first getting it right for you in the 20K–200K range.
       </p>
     </div>
   </section>
@@ -427,7 +723,7 @@
     <div class="footer-grid">
       <div style="max-width:320px;">
         <div class="footer-logo">ZOL<span>MARKETS</span></div>
-        <p class="footer-tag">We turn followers into revenue — no upfront cost, ever. A performance-based monetization agency for creators with 20K–200K followers.</p>
+        <p class="footer-tag">We turn your followers into revenue — no upfront cost, ever. Built for creators with 20K–200K followers.</p>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
@@ -450,5 +746,146 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    var submitBtn = document.getElementById('scannerSubmit');
+    if (!submitBtn) return;
+
+    var radioQuestions = [
+      { name: 'q3', max: 15, label: 'Niche Clarity' },
+      { name: 'q4', max: 15, label: 'Posting Consistency' },
+      { name: 'q5', max: 15, label: 'Audience Interaction' },
+      { name: 'q6', max: 10, label: 'Monetization Track Record' }
+    ];
+
+    function scoreFollowers(f){
+      if (f <= 0) return 0;
+      if (f < 20000) return Math.round(5 + (f / 20000) * 10);
+      if (f < 75000) return Math.round(15 + ((f - 20000) / 55000) * 5);
+      if (f <= 200000) return 20;
+      return Math.round(Math.max(10, 20 - ((f - 200000) / 300000) * 10));
+    }
+
+    function scoreEngagement(engagement, followers){
+      if (!followers || followers <= 0) return 0;
+      var rate = (engagement / followers) * 100;
+      return Math.round(Math.max(3, Math.min(25, 3 + rate * 4)));
+    }
+
+    submitBtn.addEventListener('click', function(){
+      var total = 0;
+      var results = [];
+      var missing = false;
+
+      var followersRaw = document.getElementById('q1Input').value;
+      var engagementRaw = document.getElementById('q2Input').value;
+      var followers = parseInt(followersRaw, 10);
+      var engagement = parseInt(engagementRaw, 10);
+
+      if (followersRaw === '' || isNaN(followers) || followers < 0) { missing = true; }
+      if (engagementRaw === '' || isNaN(engagement) || engagement < 0) { missing = true; }
+
+      if (!missing) {
+        var q1Score = scoreFollowers(followers);
+        var rate = followers > 0 ? (engagement / followers) * 100 : 0;
+        var q2Score = scoreEngagement(engagement, followers);
+        total += q1Score + q2Score;
+        results.push({ label: 'Audience Size (' + followers.toLocaleString() + ' followers)', val: q1Score, max: 20 });
+        results.push({ label: 'Engagement (' + rate.toFixed(1) + '% rate)', val: q2Score, max: 25 });
+      }
+
+      radioQuestions.forEach(function(q){
+        var checked = document.querySelector('input[name="' + q.name + '"]:checked');
+        if (!checked) { missing = true; return; }
+        var val = parseInt(checked.value, 10);
+        total += val;
+        results.push({ label: q.label, val: val, max: q.max });
+      });
+
+      var errorEl = document.getElementById('scannerError');
+      if (missing) {
+        errorEl.style.display = 'block';
+        return;
+      }
+      errorEl.style.display = 'none';
+
+      var tier, desc, ctaText, ctaHref;
+      if (total >= 80) {
+        tier = "🔥 High Monetization Potential";
+        desc = "Your audience is ready. This is exactly the kind of profile we build products for — book a call and let's figure out what to launch first.";
+        ctaText = "Book Your Free Call";
+        ctaHref = "https://calendly.com/lolocarlo2010/30min";
+      } else if (total >= 55) {
+        tier = "Solid Potential — Needs The Right System";
+        desc = "You've got real potential here, but a few gaps are probably holding you back from converting followers into paying customers. That's a solvable problem on a free call.";
+        ctaText = "Book Your Free Call";
+        ctaHref = "https://calendly.com/lolocarlo2010/30min";
+      } else {
+        tier = "Early-Stage Potential";
+        desc = "You're not quite there yet — and that's completely fine. Start with the free guide to shore up the basics, then come back for a call once you've built more of a foundation.";
+        ctaText = "Get the Free Guide Instead";
+        ctaHref = "#free-guide";
+      }
+
+      document.getElementById('scannerTier').textContent = tier;
+      document.getElementById('scannerTierDesc').textContent = desc;
+      var cta = document.getElementById('scannerCta');
+      cta.textContent = ctaText;
+      cta.setAttribute('href', ctaHref);
+
+      var breakdown = document.getElementById('scannerBreakdown');
+      breakdown.innerHTML = '';
+      results.forEach(function(r){
+        var pct = Math.round((r.val / r.max) * 100);
+        var row = document.createElement('div');
+        row.className = 'scanner-bar-row';
+        row.innerHTML =
+          '<div class="scanner-bar-label"><span>' + r.label + '</span><span>' + r.val + '/' + r.max + '</span></div>' +
+          '<div class="scanner-bar-track"><div class="scanner-bar-fill" style="width:' + pct + '%"></div></div>';
+        breakdown.appendChild(row);
+      });
+
+      // animate score count-up
+      var scoreEl = document.getElementById('scannerScoreNum');
+      var current = 0;
+      var step = Math.max(1, Math.round(total / 30));
+      var timer = setInterval(function(){
+        current += step;
+        if (current >= total) { current = total; clearInterval(timer); }
+        scoreEl.textContent = current;
+      }, 20);
+
+      document.getElementById('scannerForm').style.display = 'none';
+      document.getElementById('scannerResult').style.display = 'block';
+    });
+
+    document.getElementById('scannerRetake').addEventListener('click', function(){
+      document.getElementById('scannerResult').style.display = 'none';
+      document.getElementById('scannerForm').style.display = 'block';
+      document.querySelectorAll('.scanner-radio').forEach(function(r){ r.checked = false; });
+      document.getElementById('q1Input').value = '';
+      document.getElementById('q2Input').value = '';
+    });
+  })();
+
+  var guideForm = document.getElementById('guideFormEl');
+  if (guideForm) {
+    guideForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var data = new FormData(guideForm);
+      fetch(guideForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(){
+        document.getElementById('guideForm').style.display = 'none';
+        document.getElementById('guideSuccess').style.display = 'block';
+      }).catch(function(){
+        document.getElementById('guideForm').style.display = 'none';
+        document.getElementById('guideSuccess').style.display = 'block';
+      });
+    });
+  }
+</script>
 </body>
 </html>
