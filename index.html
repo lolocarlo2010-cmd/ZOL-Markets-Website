@@ -325,6 +325,15 @@
   }
   .scanner-number:focus{outline:none; border-color:var(--green);}
   .scanner-hint{font-size:12.5px; color:var(--ink-soft); margin-top:6px;}
+  .scanner-hint a{color:var(--green); font-weight:700; text-decoration:underline;}
+  .scanner-lookup-btn{
+    flex-shrink:0; padding:14px 22px; border:none; border-radius:10px; background:var(--green);
+    color:#fff; font-weight:700; font-size:14.5px; cursor:pointer; white-space:nowrap;
+  }
+  .scanner-lookup-btn:disabled{opacity:0.6; cursor:default;}
+  .scanner-lookup-result{
+    margin-top:12px; padding:14px 16px; background:var(--green-tint); border-radius:10px; font-size:14px; font-weight:700;
+  }
   .scanner-submit{
     width:100%; margin-top:12px; padding:16px; border:none; border-radius:12px;
     background:var(--ink); color:#fff; font-weight:800; font-size:15.5px; cursor:pointer;
@@ -402,16 +411,24 @@
 
       <div class="scanner-card">
         <div id="scannerForm">
-          <div class="scanner-q">
-            <div class="scanner-q-label">1. How many followers do you have on your main platform?</div>
-            <input class="scanner-number" type="number" min="0" step="1" inputmode="numeric" id="q1Input" placeholder="e.g. 42000">
-            <div class="scanner-hint">Just the number, no commas.</div>
+          <div class="scanner-q" id="lookupBlock">
+            <div class="scanner-q-label">1 &amp; 2. What's your Instagram username?</div>
+            <div style="display:flex; gap:10px;">
+              <input class="scanner-number" type="text" id="igUsernameInput" placeholder="e.g. yourusername" style="flex:1;" autocomplete="off" autocapitalize="off">
+              <button type="button" class="scanner-lookup-btn" id="lookupBtn">Look Up My Stats</button>
+            </div>
+            <div class="scanner-hint">We'll automatically pull your follower count and engagement rate. Not on Instagram, private account, or lookup not working? <a href="#" id="manualToggleLink">Enter your numbers manually instead</a>.</div>
+            <div id="lookupStatus" class="scanner-hint" style="display:none;"></div>
+            <div id="lookupResult" class="scanner-lookup-result" style="display:none;"></div>
           </div>
 
-          <div class="scanner-q">
+          <div class="scanner-q" id="manualBlock" style="display:none;">
+            <div class="scanner-q-label">1. How many followers do you have on your main platform?</div>
+            <input class="scanner-number" type="number" min="0" step="1" inputmode="numeric" id="q1Input" placeholder="e.g. 42000" style="margin-bottom:16px;">
+            <div class="scanner-hint" style="margin-bottom:16px;">Just the number, no commas.</div>
             <div class="scanner-q-label">2. On a typical post, how many total likes + comments + saves do you get?</div>
             <input class="scanner-number" type="number" min="0" step="1" inputmode="numeric" id="q2Input" placeholder="e.g. 1800">
-            <div class="scanner-hint">A rough average is fine — we'll turn this into your engagement rate. Not sure? Open your last 3–5 posts, add up the likes + comments + saves on each, then divide by how many posts you checked.</div>
+            <div class="scanner-hint">A rough average is fine. Not sure? Open your last 3–5 posts, add up the likes + comments + saves on each, then divide by how many posts you checked. <a href="#" id="lookupToggleLink">Try the automatic lookup instead</a>.</div>
           </div>
 
           <div class="scanner-q">
@@ -819,10 +836,73 @@
       return Math.round(Math.max(10, 20 - ((f - 200000) / 300000) * 10));
     }
 
-    function scoreEngagement(engagement, followers){
-      if (!followers || followers <= 0) return 0;
-      var rate = (engagement / followers) * 100;
+    function scoreEngagementFromRate(rate){
       return Math.round(Math.max(3, Math.min(25, 3 + rate * 4)));
+    }
+
+    // --- Auto-lookup vs manual entry toggle ---
+    var lookupData = null;
+    var lookupBlock = document.getElementById('lookupBlock');
+    var manualBlock = document.getElementById('manualBlock');
+    var manualToggleLink = document.getElementById('manualToggleLink');
+    var lookupToggleLink = document.getElementById('lookupToggleLink');
+    var lookupBtn = document.getElementById('lookupBtn');
+    var lookupStatus = document.getElementById('lookupStatus');
+    var lookupResult = document.getElementById('lookupResult');
+
+    if (manualToggleLink) {
+      manualToggleLink.addEventListener('click', function(e){
+        e.preventDefault();
+        lookupBlock.style.display = 'none';
+        manualBlock.style.display = 'block';
+      });
+    }
+    if (lookupToggleLink) {
+      lookupToggleLink.addEventListener('click', function(e){
+        e.preventDefault();
+        manualBlock.style.display = 'none';
+        lookupBlock.style.display = 'block';
+      });
+    }
+
+    if (lookupBtn) {
+      lookupBtn.addEventListener('click', function(){
+        var username = document.getElementById('igUsernameInput').value.trim().replace(/^@/, '');
+        if (!username) {
+          lookupStatus.style.display = 'block';
+          lookupStatus.textContent = 'Enter your Instagram username first.';
+          return;
+        }
+        lookupBtn.disabled = true;
+        lookupBtn.textContent = 'Looking up...';
+        lookupResult.style.display = 'none';
+        lookupStatus.style.display = 'block';
+        lookupStatus.textContent = 'Pulling your stats...';
+
+        fetch('/api/analyze?platform=instagram&username=' + encodeURIComponent(username))
+          .then(function(r){ return r.json(); })
+          .then(function(data){
+            if (!data || !data.success) {
+              lookupData = null;
+              lookupStatus.textContent = (data && data.error) ? data.error : "Couldn't find that profile — try again or enter your numbers manually.";
+              manualBlock.style.display = 'block';
+              return;
+            }
+            lookupData = { followers: data.followers, engagement_rate: data.engagement_rate };
+            lookupStatus.style.display = 'none';
+            lookupResult.style.display = 'block';
+            lookupResult.textContent = lookupData.followers.toLocaleString() + ' followers · ' + lookupData.engagement_rate.toFixed(1) + '% engagement rate — got it!';
+          })
+          .catch(function(){
+            lookupData = null;
+            lookupStatus.textContent = "Lookup failed — try again or enter your numbers manually.";
+            manualBlock.style.display = 'block';
+          })
+          .finally(function(){
+            lookupBtn.disabled = false;
+            lookupBtn.textContent = 'Look Up My Stats';
+          });
+      });
     }
 
     submitBtn.addEventListener('click', function(){
@@ -830,18 +910,26 @@
       var results = [];
       var missing = false;
 
-      var followersRaw = document.getElementById('q1Input').value;
-      var engagementRaw = document.getElementById('q2Input').value;
-      var followers = parseInt(followersRaw, 10);
-      var engagement = parseInt(engagementRaw, 10);
+      var followers, rate;
+      var usingManual = manualBlock && manualBlock.style.display !== 'none';
 
-      if (followersRaw === '' || isNaN(followers) || followers < 0) { missing = true; }
-      if (engagementRaw === '' || isNaN(engagement) || engagement < 0) { missing = true; }
+      if (lookupData && !usingManual) {
+        followers = lookupData.followers;
+        rate = lookupData.engagement_rate;
+      } else {
+        var followersRaw = document.getElementById('q1Input').value;
+        var engagementRaw = document.getElementById('q2Input').value;
+        followers = parseInt(followersRaw, 10);
+        var engagement = parseInt(engagementRaw, 10);
+
+        if (followersRaw === '' || isNaN(followers) || followers < 0) { missing = true; }
+        if (engagementRaw === '' || isNaN(engagement) || engagement < 0) { missing = true; }
+        rate = (!missing && followers > 0) ? (engagement / followers) * 100 : 0;
+      }
 
       if (!missing) {
         var q1Score = scoreFollowers(followers);
-        var rate = followers > 0 ? (engagement / followers) * 100 : 0;
-        var q2Score = scoreEngagement(engagement, followers);
+        var q2Score = scoreEngagementFromRate(rate);
         total += q1Score + q2Score;
         results.push({ label: 'Audience Size (' + followers.toLocaleString() + ' followers)', val: q1Score, max: 20 });
         results.push({ label: 'Engagement (' + rate.toFixed(1) + '% rate)', val: q2Score, max: 25 });
@@ -918,6 +1006,12 @@
       document.querySelectorAll('.scanner-radio').forEach(function(r){ r.checked = false; });
       document.getElementById('q1Input').value = '';
       document.getElementById('q2Input').value = '';
+      document.getElementById('igUsernameInput').value = '';
+      lookupData = null;
+      lookupResult.style.display = 'none';
+      lookupStatus.style.display = 'none';
+      manualBlock.style.display = 'none';
+      lookupBlock.style.display = 'block';
     });
   })();
 
